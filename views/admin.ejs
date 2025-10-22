@@ -5,48 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin – Policy Pulse</title>
   <link rel="stylesheet" href="/public/css/styles.css">
+  <style>
+    .table th, .table td { font-size: 14px; }
+    .nowrap { white-space: nowrap; }
+    .muted { color: #64748b; font-size: 12px; }
+  </style>
 </head>
 <body>
   <div class="container">
     <header class="header">
       <img src="/public/images/logo.jpg" alt="Policy Pulse" class="logo">
-      <h1>Admin Dashboard</h1>
+      <div>
+        <h1>Admin Dashboard</h1>
+        <div class="muted">All captured fields are shown in separate columns.</div>
+      </div>
     </header>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>When</th>
-          <th>Name</th>
-          <th>Contact</th>
-          <th>Address</th>
-          <th>Licensed</th>
-          <th>Experience</th>
-          <th>Resume</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% rows.forEach(r => { %>
-        <tr>
-          <td><%= r.created_at %></td>
-          <td><%= r.first_name %> <%= r.last_name %></td>
-          <td>
-            <div><a href="mailto:<%= r.email %>"><%= r.email %></a></div>
-            <div><a href="tel:<%= r.cellphone %>"><%= r.cellphone %></a></div>
-          </td>
-          <td><%= r.address %>, <%= r.city %>, <%= r.state %> <%= r.zip %></td>
-          <td><%= r.licensed_agent ? 'Yes' : 'No' %></td>
-          <td><%= r.years_experience %> yrs</td>
-          <td>
-            <% if (r.resume_path) { %>
-              <a href="<%= r.resume_path %>" download><%= r.resume_original_name || 'Download' %></a>
-            <% } else { %>
-              —
-            <% } %>
-          </td>
-        </tr>
-      <% }) %>
-      </tbody>
-    </table>
+
+    <div class="card" style="overflow:auto;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Submitted</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Cellphone</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Licensed Agent</th>
+            <th>Years of Exp</th>
+            <th>Disclaimer Agreed</th>
+            <th>Resume</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% rows.forEach(r => { %>
+          <tr>
+            <td class="nowrap"><%= r.id %></td>
+            <td class="nowrap"><%= r.created_at %></td>
+            <td><%= r.first_name %></td>
+            <td><%= r.last_name %></td>
+            <td><a href="mailto:<%= r.email %>"><%= r.email %></a></td>
+            <td><a href="tel:<%= r.cellphone %>"><%= r.cellphone %></a></td>
+            <td><%= r.address %></td>
+            <td><%= r.city %></td>
+            <td><%= r.state %></td>
+            <td><%= r.zip %></td>
+            <td><%= r.licensed_agent ? 'Yes' : 'No' %></td>
+            <td><%= r.years_experience %></td>
+            <td><%= r.disclaimer_checked ? 'Yes' : 'No' %></td>
+            <td>
+              <% if (r.resume_path) { %>
+                <a href="<%= r.resume_path %>" download>
+                  <%= r.resume_original_name || 'Download' %>
+                </a>
+              <% } else { %>
+                —
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </body>
 </html>
