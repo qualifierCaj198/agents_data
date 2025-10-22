@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin – Policy Pulse</title>
+  <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="/public/images/logo.jpg" alt="Policy Pulse" class="logo">
+      <h1>Admin Dashboard</h1>
+    </header>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Address</th>
+          <th>Licensed</th>
+          <th>Experience</th>
+          <th>Resume</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% rows.forEach(r => { %>
+        <tr>
+          <td><%= r.created_at %></td>
+          <td><%= r.first_name %> <%= r.last_name %></td>
+          <td>
+            <div><a href="mailto:<%= r.email %>"><%= r.email %></a></div>
+            <div><a href="tel:<%= r.cellphone %>"><%= r.cellphone %></a></div>
+          </td>
+          <td><%= r.address %>, <%= r.city %>, <%= r.state %> <%= r.zip %></td>
+          <td><%= r.licensed_agent ? 'Yes' : 'No' %></td>
+          <td><%= r.years_experience %> yrs</td>
+          <td>
+            <% if (r.resume_path) { %>
+              <a href="<%= r.resume_path %>" download><%= r.resume_original_name || 'Download' %></a>
+            <% } else { %>
+              —
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

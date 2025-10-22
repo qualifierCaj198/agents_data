@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: #f8fafc; color: #0f172a; margin: 0; }
+.container { max-width: 980px; margin: 0 auto; padding: 20px; }
+.container.small { max-width: 560px; text-align: center; }
+.header { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.logo { height: 70px; width: auto; }
+.card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px rgba(2,6,23,0.06); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+label { display: flex; flex-direction: column; font-size: 14px; gap: 6px; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="file"], input[type="password"], input:not([type]) {
+  padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff;
+}
+.checkbox { display: flex; align-items: center; gap: 8px; }
+.disclaimer { background: #f1f5f9; padding: 14px; border-radius: 10px; margin: 16px 0; font-size: 14px; }
+.btn { display: inline-block; background: #2563eb; color: #fff; text-decoration: none; padding: 10px 16px; border-radius: 10px; border: none; cursor: pointer; }
+.btn:hover { background: #1e40af; }
+.table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; }
+.table th, .table td { border-bottom: 1px solid #e5e7eb; padding: 10px; text-align: left; vertical-align: top; }
+.table thead { background: #eef2ff; }

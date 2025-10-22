@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policy Pulse – Application</title>
+  <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="/public/images/logo.jpg" alt="Policy Pulse" class="logo">
+      <h1>Apply to Policy Pulse</h1>
+      <p>Please fill in the form below. Fields marked * are required.</p>
+    </header>
+
+    <form action="/submit" method="post" enctype="multipart/form-data" class="card">
+      <div class="grid">
+        <label>First name* <input name="first_name" required></label>
+        <label>Last name* <input name="last_name" required></label>
+        <label>Address <input name="address"></label>
+        <label>City <input name="city"></label>
+        <label>State <input name="state" maxlength="2" placeholder="FL"></label>
+        <label>Zip <input name="zip"></label>
+        <label>Cellphone* <input name="cellphone" type="tel" required></label>
+        <label>Email* <input name="email" type="email" required></label>
+        <label><input type="checkbox" name="licensed_agent"> Licensed insurance agent</label>
+        <label>Years of experience <input name="years_experience" type="number" min="0" step="1" placeholder="0"></label>
+        <label>Upload resume <input name="resume" type="file" accept=".pdf,.doc,.docx,.txt,.rtf"></label>
+      </div>
+
+      <div class="disclaimer">
+        <h3>Background Check Disclosure and Authorization</h3>
+        <p>By submitting this application, I acknowledge and understand that Policy Pulse conducts background checks on all prospective employees and contractors as part of its hiring and onboarding process.</p>
+        <p>The background check may include, but is not limited to:</p>
+        <ul>
+          <li>Verification of identity and work eligibility</li>
+          <li>Review of professional licenses and credentials</li>
+          <li>Employment and education verification</li>
+          <li>Criminal background history</li>
+        </ul>
+        <p>I understand that any offer of employment or contracting is contingent upon the successful completion of this background check and that the results may affect my eligibility to be hired or contracted.</p>
+        <p>I hereby authorize Policy Pulse, its representatives, or designated third-party vendors to obtain and review any information necessary to complete this background check, in accordance with applicable federal and state laws.</p>
+        <p>I further acknowledge that refusal to consent to this background check or the presence of disqualifying information may result in the withdrawal of any offer of employment or contracting.</p>
+        <label class="checkbox"><input type="checkbox" name="disclaimer" required> I acknowledge and authorize this background check.</label>
+      </div>
+
+      <button type="submit" class="btn">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>
